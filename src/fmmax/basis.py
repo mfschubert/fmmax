@@ -321,9 +321,11 @@ def _basis_coefficients_circular(
     G2 = G2.flatten()
 
     # Generate the actual vectors and compute their magnitude.
+    u = onp.asarray(primitive_lattice_vectors.u)
+    v = onp.asarray(primitive_lattice_vectors.v)
     vectors = (
-        G1[..., onp.newaxis] * primitive_lattice_vectors.u[..., onp.newaxis, :]
-        + G2[..., onp.newaxis] * primitive_lattice_vectors.v[..., onp.newaxis, :]
+        G1[..., onp.newaxis] * u[..., onp.newaxis, :]
+        + G2[..., onp.newaxis] * v[..., onp.newaxis, :]
     )
     magnitude = onp.linalg.norm(vectors, axis=-1)
 
