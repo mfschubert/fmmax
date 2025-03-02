@@ -2,7 +2,6 @@
 
 ## Unreleased
 - Set `Formulation.JONES_DIRECT_FOURIER` as the default formulation for all eigensolve functions in `fmm` module.
-- Add `fields.layer_integrated_absorption` function to compute an array giving the absorption within a layer on the real-space grid, integrated over its thickness.
 
 ## 0.14.4 (February 25, 2025)
 - Set `Formulation.JONES_DIRECT_FOURIER` as the default formulation for `fmm.eigensolve_isotropic_media`.
