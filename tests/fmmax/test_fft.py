@@ -11,9 +11,6 @@ import numpy as onp
 
 from fmmax import _fft, basis
 
-# Enable 64-bit precision for higher-accuracy.
-jax.config.update("jax_enable_x64", True)
-
 
 PRIMITIVE_LATTICE_VECTORS = basis.LatticeVectors(
     u=jnp.array([1, 0]), v=jnp.array([0, 1])

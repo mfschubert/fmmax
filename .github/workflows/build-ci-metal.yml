@@ -1,0 +1,309 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 13 * * 1"  # Every Monday at 9AM EST
+
+jobs:
+  test-fmmax-jax-metal-basis:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+      - name: Setup environment
+        run: |
+            python -m pip install --upgrade pip
+            pip install --upgrade "jax-metal"
+            pip install ".[dev]"
+      - name: Test fmmax
+        run: pytest tests/fmmax/test_basis.py
+
+  test-fmmax-jax-metal-beams:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+      - name: Setup environment
+        run: |
+            python -m pip install --upgrade pip
+            pip install --upgrade "jax-metal"
+            pip install ".[dev]"
+      - name: Test fmmax
+        run: pytest tests/fmmax/test_beams.py
+
+  test-fmmax-jax-metal-farfield:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+      - name: Setup environment
+        run: |
+            python -m pip install --upgrade pip
+            pip install --upgrade "jax-metal"
+            pip install ".[dev]"
+      - name: Test fmmax
+        run: pytest tests/fmmax/test_farfield.py
+
+  test-fmmax-jax-metal-fft:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fft.py
+
+  test-fmmax-jax-metal-fields:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fields.py
+
+  test-fmmax-jax-metal-fmm-anisotropic:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fmm_anisotropic.py
+
+  test-fmmax-jax-metal-fmm-shapes:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fmm_shapes.py
+
+  test-fmmax-jax-metal-fmm:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fmm.py
+  test-fmmax-jax-metal-fresnel:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_fresnel.py
+
+  test-fmmax-jax-metal-grad-finite-difference:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_grad_finite_difference.py
+
+  test-fmmax-jax-metal-grad:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_grad.py
+
+  test-fmmax-jax-metal-pml:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_pml.py
+
+  test-fmmax-jax-metal-scattering:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_scattering.py
+
+  test-fmmax-jax-metal-sources:
+        runs-on: macos-latest
+        timeout-minutes: 30
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          - name: Setup python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.10"
+                cache: "pip"
+                cache-dependency-path: pyproject.toml
+          - name: Setup environment
+            run: |
+                python -m pip install --upgrade pip
+                pip install --upgrade "jax-metal"
+                pip install ".[dev]"
+          - name: Test fmmax
+            run: pytest tests/fmmax/test_sources.py
+
+  test-fmmax-jax-metal-utils:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+            python-version: "3.10"
+            cache: "pip"
+            cache-dependency-path: pyproject.toml
+      - name: Setup environment
+        run: |
+            python -m pip install --upgrade pip
+            pip install --upgrade "jax-metal"
+            pip install ".[dev]"
+      - name: Test fmmax
+        run: pytest tests/fmmax/test_utils.py

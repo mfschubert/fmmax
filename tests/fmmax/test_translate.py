@@ -6,14 +6,11 @@ Copyright (c) 2024 Martin F. Schubert
 import functools
 import unittest
 
-import jax
 import jax.numpy as jnp
 import numpy as onp
 from parameterized import parameterized
 
 from fmmax import basis, fmm, scattering, translate
-
-jax.config.update("jax_enable_x64", True)
 
 
 def xy(primitive_lattice_vectors, shape):

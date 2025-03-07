@@ -13,8 +13,6 @@ from parameterized import parameterized
 
 from fmmax import _misc, basis, farfield, fields, fmm, scattering, sources
 
-jax.config.update("jax_enable_x64", True)
-
 
 class FarfieldProfileTest(unittest.TestCase):
     def test_dipole_farfield_matches_analytical_calculation(self):

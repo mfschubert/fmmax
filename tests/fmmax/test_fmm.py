@@ -13,9 +13,6 @@ from parameterized import parameterized
 
 from fmmax import basis, fmm
 
-# Enable 64-bit precision for higher accuracy.
-jax.config.update("jax_enable_x64", True)
-
 
 WAVELENGTH = jnp.asarray(0.628)
 PRIMITIVE_LATTICE_VECTORS = basis.LatticeVectors(
