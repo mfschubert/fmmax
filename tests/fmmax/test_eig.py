@@ -13,9 +13,6 @@ from parameterized import parameterized
 
 from fmmax import _eig, _misc
 
-# Enable 64-bit precision for higher accuracy.
-jax.config.update("jax_enable_x64", True)
-
 RTOL = 1e-5
 RTOL_FD = 1e-3
 

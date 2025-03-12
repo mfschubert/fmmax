@@ -16,8 +16,8 @@ from fmmax import utils
 
 # Officially defines the x- and y- directions. By convention, the x-axis preceeds
 # the y-axis in our array indexing scheme.
-X: jnp.ndarray = jnp.array([1.0, 0.0])
-Y: jnp.ndarray = jnp.array([0.0, 1.0])
+X: onp.ndarray = onp.array([1.0, 0.0], dtype=onp.float32)
+Y: onp.ndarray = onp.array([0.0, 1.0], dtype=onp.float32)
 
 
 @dataclasses.dataclass
@@ -32,11 +32,11 @@ class LatticeVectors:
         v: The second primitive lattice vector, with identical shape.
     """
 
-    u: jnp.ndarray
-    v: jnp.ndarray
+    u: jnp.ndarray | onp.ndarray
+    v: jnp.ndarray | onp.ndarray
 
     def __post_init__(self) -> None:
-        if isinstance(self.u, jnp.ndarray):
+        if isinstance(self.u, (jnp.ndarray, onp.ndarray)):
             if self.u.shape[-1] != 2 or self.v.shape[-1] != 2:
                 raise ValueError(
                     f"`u` and `v` must have a trailing length of 2, but got shapes "

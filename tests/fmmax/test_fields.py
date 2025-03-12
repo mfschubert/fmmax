@@ -13,8 +13,6 @@ from parameterized import parameterized
 
 from fmmax import basis, fields, fmm, scattering
 
-jax.config.update("jax_enable_x64", True)
-
 
 def example_solve(permittivity_batch_shape, wavelength_batch_shape):
     # Solves for the interior scattering matrices of a simple structure.

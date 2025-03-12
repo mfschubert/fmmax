@@ -14,9 +14,6 @@ from scipy import ndimage
 
 from fmmax import _vector, basis
 
-# Enable 64-bit precision for higher accuracy.
-jax.config.update("jax_enable_x64", True)
-
 
 def _generate_array(shape, arr_scale, binarize_arr):
     x, y = jnp.meshgrid(
