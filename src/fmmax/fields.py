@@ -793,10 +793,12 @@ def stack_fields_3d_auto_grid(
         The electric and magnetic fields and grid coordinates, ``(ef, hf, (x, y, z))``.
     """
     primitive_lattice_vectors = layer_solve_results[0].primitive_lattice_vectors
-    grid_shape = (
-        int(jnp.round(jnp.linalg.norm(primitive_lattice_vectors.u) / grid_spacing)),
-        int(jnp.round(jnp.linalg.norm(primitive_lattice_vectors.v) / grid_spacing)),
-    )
+
+    u = primitive_lattice_vectors.u
+    v = primitive_lattice_vectors.v
+    udim = jnp.amax(jnp.sqrt(u[..., 0] ** 2 + u[..., 1] ** 2)) / grid_spacing
+    vdim = jnp.amax(jnp.sqrt(v[..., 0] ** 2 + v[..., 1] ** 2)) / grid_spacing
+    grid_shape = int(jnp.around(udim)), int(jnp.around(vdim))
 
     layer_znum = tuple([int(jnp.round(t / grid_spacing)) for t in layer_thicknesses])
 

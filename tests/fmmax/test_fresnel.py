@@ -81,10 +81,10 @@ class FresnelComparisonTest(unittest.TestCase):
         )
 
         solve_result_ambient = eigensolve_fn(
-            permittivity=jnp.asarray(n_ambient, dtype=complex) ** 2
+            permittivity=jnp.asarray([[n_ambient]], dtype=complex) ** 2
         )
         solve_result_substrate = eigensolve_fn(
-            permittivity=jnp.asarray(n_substrate, dtype=complex) ** 2
+            permittivity=jnp.asarray([[n_substrate]], dtype=complex) ** 2
         )
 
         layer_solve_results = (solve_result_ambient, solve_result_substrate)

@@ -384,8 +384,8 @@ class InternalSourcesTest(unittest.TestCase):
             shape=(21, 21),
             num_unit_cells=brillouin_grid_shape,
         )
-        x = jnp.squeeze(x)  # Remove batch dimensions from BZ grid.
-        y = jnp.squeeze(y)
+        x = x[0, 0, :, :]  # Remove batch dimensions from BZ grid.
+        y = y[0, 0, :, :]
 
         # Perform Brillouin zone integration and compute magnetic field magnitude.
         hfield = jnp.mean(jnp.asarray(hfield), axis=(1, 2))

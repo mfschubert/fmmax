@@ -593,11 +593,11 @@ class LayerSolveResultInputValidationTest(unittest.TestCase):
         )
         num = expansion.num_terms
         kwargs = {
-            "wavelength": jnp.ones((3, 1, 1)),
-            "in_plane_wavevector": jnp.ones((1, 4, 5, 2)),
+            "wavelength": jnp.ones((3, 4, 5)),
+            "in_plane_wavevector": jnp.ones((3, 4, 5, 2)),
             "primitive_lattice_vectors": basis.LatticeVectors(
-                u=basis.X * jnp.ones((1, 1, 1, 2)),
-                v=basis.Y * jnp.ones((1, 1, 1, 2)),
+                u=basis.X * jnp.ones((3, 4, 5, 2)),
+                v=basis.Y * jnp.ones((3, 4, 5, 2)),
             ),
             "expansion": expansion,
             "eigenvalues": jnp.ones((3, 4, 5, 2 * num)),
